@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftFirstApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are born with 300 bones; by the time you are an adult you will have 206." lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUZ-TE-9Vw">
+                                <rect key="frame" x="40" y="280" width="520" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know... ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfT-ue-kfC">
+                                <rect key="frame" x="40" y="108" width="520" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-Im-e3k">
+                                <rect key="frame" x="40" y="480" width="520" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3NL-GV-xZL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                <state key="normal" title="Another Fun Fact ?"/>
+                                <connections>
+                                    <action selector="newFunFact" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ea-LE-vW6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.53725490196078429" green="0.0078431372549019607" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g7I-Im-e3k" secondAttribute="bottom" constant="80" id="83G-4V-OIB"/>
+                            <constraint firstItem="g7I-Im-e3k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DYA-Vi-fRg"/>
+                            <constraint firstItem="mfT-ue-kfC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="Jga-ZA-YfN"/>
+                            <constraint firstItem="mfT-ue-kfC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KXg-1c-G1Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g7I-Im-e3k" secondAttribute="trailing" constant="20" id="Kxh-I2-i39"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SUZ-TE-9Vw" secondAttribute="trailing" constant="20" id="T9A-uL-NL6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mfT-ue-kfC" secondAttribute="trailing" constant="20" id="VBg-ci-lau"/>
+                            <constraint firstItem="SUZ-TE-9Vw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="gUK-WO-q2k"/>
+                            <constraint firstItem="mfT-ue-kfC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ghx-hv-JAi"/>
+                            <constraint firstItem="SUZ-TE-9Vw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gqb-Gw-3zV"/>
+                            <constraint firstItem="g7I-Im-e3k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="sos-Sp-mmn"/>
+                            <constraint firstItem="SUZ-TE-9Vw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t6y-OK-219"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="funFactButton" destination="g7I-Im-e3k" id="CP7-TB-RJa"/>
+                        <outlet property="funFactLabel" destination="SUZ-TE-9Vw" id="jDe-uP-3sk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="641" y="517"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+</document>
