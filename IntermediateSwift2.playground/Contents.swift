@@ -10,3 +10,5 @@ struct Point {
 struct Map {
 	static let origin = Point(x: 0, y: 0)
 }
+
+Map.origin
