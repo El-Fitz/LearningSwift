@@ -64,3 +64,59 @@ print (rect.center)
 
 rect.center = Point🙂(x: 10, y: 15)
 print(rect.center)
+
+
+enum ReadingMode {
+	case Day
+	case Evening
+	case Night
+	
+	var statusBarStyle: UIStatusBarStyle {
+		switch self {
+		case .Day, .Evening: return .default
+		case .Night: return .lightContent
+		}
+	}
+	
+	var headlineColor: UIColor {
+		switch self {
+		case .Night: return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+		case .Evening, .Day: return UIColor(red: 16/255.0, green: 16/255.0, blue: 16/255.0, alpha: 1.0)
+		}
+	}
+	
+	var dateColor: UIColor {
+		switch self {
+		case .Day, .Evening: return UIColor(red: 132/255.0, green: 132/255.0, blue: 132/255.0, alpha: 1.0)
+		case .Night: return UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 1.0)
+		}
+	}
+	
+	var bodyTextColor: UIColor {
+		switch self {
+		case .Day, .Evening: return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+		case .Night: return UIColor(red: 151/255.0, green: 151/255.0, blue: 151/255.0, alpha: 1.0)
+		}
+	}
+	
+	var linkColor: UIColor {
+		switch self {
+		case .Day, .Evening: return UIColor(red: 68/255.0, green: 133/255.0, blue: 164/255.0, alpha: 1.0)
+		case .Night: return UIColor(red: 129/255.0, green: 161/255.0, blue: 166/255.0, alpha: 1.0)
+		}
+	}
+}
+
+let titleLabel = UILabel()
+
+func readingViewWithMode(readingMode: ReadingMode) {
+	titleLabel.textColor = readingMode.headlineColor
+}
+
+class ReadItLaterClient {
+	lazy var session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
+	
+	/*
+	Do the rest of the work
+	*/
+}
