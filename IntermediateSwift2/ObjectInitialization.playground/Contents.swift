@@ -83,3 +83,41 @@ class Vehicle {
 	}
 }
 
+// Superclass Initialization
+
+class Car: Vehicle {
+	let numberOfDoors: Int
+	
+	init(name: String, numberOfDoors: Int) {
+		self.numberOfDoors = numberOfDoors
+		super.init(name: name)
+	}
+	
+	convenience override init (name: String) {
+		self.init(name: name, numberOfDoors: 4)
+	}
+	
+	convenience init () {
+		self.init(name: "Unnamed")
+	}
+}
+
+// Required Initializers
+
+class SomeClass {
+	
+	required init() {
+		
+	}
+}
+
+class AnotherClass: SomeClass {
+	
+	init(test: String) {
+		
+	}
+	
+	required init() {
+		fatalError("init() has not been implemented")
+	}
+}
