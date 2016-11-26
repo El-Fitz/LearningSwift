@@ -15,6 +15,7 @@
 		761AE0881DE08D0E004E133C /* interactiveStoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761AE0871DE08D0E004E133C /* interactiveStoryTests.swift */; };
 		761AE0931DE08D0E004E133C /* interactiveStoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761AE0921DE08D0E004E133C /* interactiveStoryUITests.swift */; };
 		76D5510D1DE9A42C00CD1A39 /* interactiveStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D5510C1DE9A42C00CD1A39 /* interactiveStory.swift */; };
+		76D551111DE9AC0800CD1A39 /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D551101DE9AC0800CD1A39 /* PageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		761AE0921DE08D0E004E133C /* interactiveStoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interactiveStoryUITests.swift; sourceTree = "<group>"; };
 		761AE0941DE08D0E004E133C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76D5510C1DE9A42C00CD1A39 /* interactiveStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = interactiveStory.swift; sourceTree = "<group>"; };
+		76D551101DE9AC0800CD1A39 /* PageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				761AE07B1DE08D0E004E133C /* LaunchScreen.storyboard */,
 				761AE07E1DE08D0E004E133C /* Info.plist */,
 				76D5510C1DE9A42C00CD1A39 /* interactiveStory.swift */,
+				76D551101DE9AC0800CD1A39 /* PageController.swift */,
 			);
 			path = interactiveStory;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D551111DE9AC0800CD1A39 /* PageController.swift in Sources */,
 				761AE0751DE08D0E004E133C /* ViewController.swift in Sources */,
 				76D5510D1DE9A42C00CD1A39 /* interactiveStory.swift in Sources */,
 				761AE0731DE08D0E004E133C /* AppDelegate.swift in Sources */,
