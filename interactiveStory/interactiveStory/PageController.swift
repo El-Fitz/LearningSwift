@@ -36,7 +36,6 @@ class PageController: UIViewController {
 		if let page = page {
 			artwork.image = page.story.artwork
 			
-			
 			let attributedString = attributedStringFromStr(text: page.story.text)
 			storyLabel.attributedText = attributedString
 			
