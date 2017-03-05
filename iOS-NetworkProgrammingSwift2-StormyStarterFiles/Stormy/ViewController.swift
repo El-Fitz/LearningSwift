@@ -24,26 +24,33 @@ extension CurrentWeather {
 
 class ViewController: UIViewController {
 	
-    
-    @IBOutlet weak var currentTemperatureLabel: UILabel!
-    @IBOutlet weak var currentHumidityLabel: UILabel!
-    @IBOutlet weak var currentPrecipitationLabel: UILabel!
-    @IBOutlet weak var currentWeatherIcon: UIImageView!
-    @IBOutlet weak var currentSummaryLabel: UILabel!
-    @IBOutlet weak var refreshButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
+	@IBOutlet weak var currentTemperatureLabel: UILabel!
+	@IBOutlet weak var currentHumidityLabel: UILabel!
+	@IBOutlet weak var currentPrecipitationLabel: UILabel!
+	@IBOutlet weak var currentWeatherIcon: UIImageView!
+	@IBOutlet weak var currentSummaryLabel: UILabel!
+	@IBOutlet weak var refreshButton: UIButton!
+	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+	
 	
 	let coordinate = Coordinate(latitude: 48.853661, longitude: 2.353106)
 	var forecastAPIClient = ForecastAPIClient(APIKey: "9cbab6144d55482bb0b8f322d1947eb6")
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		fetchCurrentWeather()
 		
-		let icon = WeatherIcon.PartlyCloudyDay.image
-		let currentWeather = CurrentWeather(temperature: 56.0, humidity: 1.0, precipitationProbability: 1.0, summary: "Wet and rainy !", icon: icon)
-		display(currentWeather)
-		
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
+	func fetchCurrentWeather() {
 		forecastAPIClient.fetchCurrentWeather(coordinate) { result in
+			self.toggleRefreshAnimation(false)
 			switch result {
 			case .Success(let currentWeather):
 				self.display(currentWeather)
@@ -55,12 +62,7 @@ class ViewController: UIViewController {
 				break
 			}
 		}
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+	}
 	
 	func display(weather: CurrentWeather) {
 		currentTemperatureLabel.text = weather.temperatureString
@@ -75,6 +77,21 @@ class ViewController: UIViewController {
 		let dismissAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
 		alertController.addAction(dismissAction)
 		presentViewController(alertController, animated: true, completion: nil)
+	}
+	
+	@IBAction func refreshWeather(sender: AnyObject) {
+		toggleRefreshAnimation(true)
+		fetchCurrentWeather()
+	}
+	
+	func toggleRefreshAnimation(on: Bool) {
+		if on {
+			//refreshButton.enabled = false
+			activityIndicator.startAnimating()
+		} else {
+			//refreshButton.enabled = true
+			activityIndicator.stopAnimating()
+		}
 	}
 }
 
