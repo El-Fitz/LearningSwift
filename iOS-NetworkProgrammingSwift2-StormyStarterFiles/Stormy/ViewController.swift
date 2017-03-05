@@ -23,6 +23,7 @@ extension CurrentWeather {
 }
 
 class ViewController: UIViewController {
+	
     
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var currentHumidityLabel: UILabel!
@@ -31,7 +32,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentSummaryLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+	
+	let coordinate = Coordinate(latitude: 48.853661, longitude: 2.353106)
+	var forecastAPIClient = ForecastAPIClient(APIKey: "9cbab6144d55482bb0b8f322d1947eb6")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +43,18 @@ class ViewController: UIViewController {
 		let currentWeather = CurrentWeather(temperature: 56.0, humidity: 1.0, precipitationProbability: 1.0, summary: "Wet and rainy !", icon: icon)
 		display(currentWeather)
 		
-		let forecastAPIKey = "9cbab6144d55482bb0b8f322d1947eb6"
-		let baseURL = NSURL(string: "https://api.darksky.net/forecast/\(forecastAPIKey)/")
-		let forecastURL = NSURL(string: "37.8267,-122.4233", relativeToURL: baseURL)
-
-		let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-		let session = NSURLSession(configuration: configuration)
-		
-		let request = NSURLRequest(URL: forecastURL!)
-		
-		let dataTask = session.dataTaskWithRequest(request, completionHandler: { data, response, error in
-			debugPrint(data)
-		})
-		dataTask.resume()
+		forecastAPIClient.fetchCurrentWeather(coordinate) { result in
+			switch result {
+			case .Success(let currentWeather):
+				self.display(currentWeather)
+				break
+			case .Failure(let error as NSError):
+				self.showAlert("Unable to retrieve forecast", message: error.localizedDescription)
+				break
+			default:
+				break
+			}
+		}
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +68,13 @@ class ViewController: UIViewController {
 		currentHumidityLabel.text = weather.humidityString
 		currentSummaryLabel.text = weather.summary
 		currentWeatherIcon.image = weather.icon
+	}
+	
+	func showAlert(title: String, message: String?, style: UIAlertControllerStyle = .Alert) {
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+		let dismissAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+		alertController.addAction(dismissAction)
+		presentViewController(alertController, animated: true, completion: nil)
 	}
 }
 
