@@ -11,6 +11,7 @@
 		760D4E7D1E6BE2FA0019DEFC /* FoursquareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760D4E7C1E6BE2FA0019DEFC /* FoursquareModels.swift */; };
 		760D4E7F1E6BF0230019DEFC /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760D4E7E1E6BF0230019DEFC /* RestaurantCell.swift */; };
 		760D4E811E6BF4CE0019DEFC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760D4E801E6BF4CE0019DEFC /* LocationManager.swift */; };
+		760D4E841E6C00540019DEFC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 760D4E831E6C00540019DEFC /* MapKit.framework */; };
 		9724C68B1CDAA25B00269D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68A1CDAA25B00269D61 /* AppDelegate.swift */; };
 		9724C68D1CDAA25B00269D61 /* RestaurantListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */; };
 		9724C68F1CDAA25B00269D61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68E1CDAA25B00269D61 /* DetailViewController.swift */; };
@@ -25,6 +26,7 @@
 		760D4E7C1E6BE2FA0019DEFC /* FoursquareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareModels.swift; sourceTree = "<group>"; };
 		760D4E7E1E6BF0230019DEFC /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		760D4E801E6BF4CE0019DEFC /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		760D4E831E6C00540019DEFC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9724C6871CDAA25B00269D61 /* RestaurantFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724C68A1CDAA25B00269D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListController.swift; sourceTree = "<group>"; };
@@ -41,17 +43,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				760D4E841E6C00540019DEFC /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		760D4E821E6C00540019DEFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				760D4E831E6C00540019DEFC /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9724C67E1CDAA25B00269D61 = {
 			isa = PBXGroup;
 			children = (
 				9724C6891CDAA25B00269D61 /* RestaurantFinder */,
 				9724C6881CDAA25B00269D61 /* Products */,
+				760D4E821E6C00540019DEFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +80,6 @@
 			children = (
 				9724C68A1CDAA25B00269D61 /* AppDelegate.swift */,
 				9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */,
-				760D4E801E6BF4CE0019DEFC /* LocationManager.swift */,
 				9724C68E1CDAA25B00269D61 /* DetailViewController.swift */,
 				760D4E7A1E6BE27D0019DEFC /* FoursquareClient.swift */,
 				9724C69E1CDAA27B00269D61 /* APIClient.swift */,
@@ -78,6 +89,7 @@
 				9724C6981CDAA25B00269D61 /* Info.plist */,
 				760D4E7C1E6BE2FA0019DEFC /* FoursquareModels.swift */,
 				760D4E7E1E6BF0230019DEFC /* RestaurantCell.swift */,
+				760D4E801E6BF4CE0019DEFC /* LocationManager.swift */,
 			);
 			path = RestaurantFinder;
 			sourceTree = "<group>";
@@ -114,6 +126,11 @@
 				TargetAttributes = {
 					9724C6861CDAA25B00269D61 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

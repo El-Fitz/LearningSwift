@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,9 +85,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="661-o3-Rp5">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nlm-eh-2gj">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                    <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHi-j3-Oe8">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="7bK-jq-Zjz" id="ZPg-J5-lPe"/>
+                                            </connections>
+                                        </mapView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="gHi-j3-Oe8" secondAttribute="trailing" id="0Fy-tA-F1o"/>
+                                        <constraint firstItem="gHi-j3-Oe8" firstAttribute="leading" secondItem="nlm-eh-2gj" secondAttribute="leading" id="Q9l-jK-gmh"/>
+                                        <constraint firstAttribute="bottom" secondItem="gHi-j3-Oe8" secondAttribute="bottom" id="SuG-9f-O4l"/>
+                                        <constraint firstItem="gHi-j3-Oe8" firstAttribute="top" secondItem="nlm-eh-2gj" secondAttribute="top" id="pOt-RS-AI7"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="nlm-eh-2gj" firstAttribute="top" secondItem="661-o3-Rp5" secondAttribute="top" id="9no-va-uSE"/>
+                                <constraint firstAttribute="bottom" secondItem="nlm-eh-2gj" secondAttribute="bottom" id="dMn-aO-WfP"/>
+                                <constraint firstItem="nlm-eh-2gj" firstAttribute="leading" secondItem="661-o3-Rp5" secondAttribute="leading" id="pM8-QE-abI"/>
+                                <constraint firstAttribute="trailing" secondItem="nlm-eh-2gj" secondAttribute="trailing" id="tQA-bY-0sZ"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantCell" id="WCw-Qf-5nD" customClass="RestaurantCell" customModule="RestaurantFinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="262" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -105,19 +136,21 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bad food" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1KX-Ym-a61">
-                                            <rect key="frame" x="243" y="11.5" width="69" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="257" y="14" width="55" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="1KX-Ym-a61" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="q1s-fk-nUg" secondAttribute="trailing" constant="8" id="00V-Wj-W56"/>
                                         <constraint firstItem="dFD-t5-uPq" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" id="Tvv-2a-oJZ"/>
                                         <constraint firstItem="q1s-fk-nUg" firstAttribute="leading" secondItem="dFD-t5-uPq" secondAttribute="trailing" constant="16" id="XVS-ih-Xhj"/>
                                         <constraint firstItem="1KX-Ym-a61" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="alZ-aQ-Ggm"/>
                                         <constraint firstItem="1KX-Ym-a61" firstAttribute="trailing" secondItem="37f-cq-3Eg" secondAttribute="trailingMargin" id="b3u-To-PdU"/>
                                         <constraint firstItem="dFD-t5-uPq" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="kj7-hx-GO7"/>
                                         <constraint firstItem="q1s-fk-nUg" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="v8x-Nk-3TL"/>
+                                        <constraint firstAttribute="centerXWithinMargins" relation="greaterThanOrEqual" secondItem="dFD-t5-uPq" secondAttribute="trailing" id="zaS-KK-UgT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,9 +172,13 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="8Rt-bq-1Ve">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refreshRestaurantData:" destination="7bK-jq-Zjz" eventType="valueChanged" id="rwl-gi-yyU"/>
+                            <action selector="refreshRestaurantData:" destination="7bK-jq-Zjz" eventType="valueChanged" id="OiI-1X-q7j"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="mapView" destination="gHi-j3-Oe8" id="tcg-F8-ItZ"/>
+                        <outlet property="stackView" destination="nlm-eh-2gj" id="5V4-CJ-wBC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
