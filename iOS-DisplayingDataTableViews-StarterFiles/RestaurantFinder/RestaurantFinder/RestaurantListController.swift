@@ -12,16 +12,26 @@ class RestaurantListController: UITableViewController {
 	
 	let coordinate = Coordinate(latitude: 40.759106, longitude: -73.985185)
 	let foursquareClient = FoursquareClient(clientID: "", clientSecret: "")
+	
+	let manager = LocationManager()
+	
+	var venues: [Venue] = [] {
+		didSet {
+			tableView.reloadData()
+		}
+	}
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 		
+		manager.getPermission()
+		
 		foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil)) { result in
 			switch result {
 			case .Success(let venues):
-				print(venues)
+				self.venues = venues
 			case .Failure(let error):
 				print(error)
 			}
@@ -46,6 +56,7 @@ class RestaurantListController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+				controller.detailItem = venues[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -59,12 +70,17 @@ class RestaurantListController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return venues.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) as! RestaurantCell
 
+		let venue = venues[indexPath.row]
+		cell.restaurantTitleLabel.text = venue.name
+		cell.restaurantCheckinLabel.text = venue.checkins.description
+		cell.restaurantCategoryLabel.text = venue.categoryName
+		
         return cell
     }
 
@@ -72,5 +88,16 @@ class RestaurantListController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+	@IBAction func refreshRestaurantData(sender: AnyObject) {
+		foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil)) { result in
+			switch result {
+			case .Success(let venues):
+				self.venues = venues
+			case .Failure(let error):
+				print(error)
+			}
+		}
+		refreshControl?.endRefreshing()
+	}
 }
 
